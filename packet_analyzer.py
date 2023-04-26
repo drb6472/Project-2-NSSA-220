@@ -46,7 +46,6 @@ import sys
 
 fileName = sys.argv[1]
 
-L = []
 ip = "192.168.100.1"
 
 if( "1" in fileName):
@@ -61,8 +60,8 @@ elif( "5" in fileName):
     ip = "192.168.100.254"
 
 filter(fileName)
-parse(fileName)
-compute(L, ip, fileName)
+parseList = parse(fileName)
+compute(parseList, ip, fileName)
 if __name__ == '__main__':
     main()
 
