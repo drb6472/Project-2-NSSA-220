@@ -59,8 +59,8 @@ elif( "4" in fileName):
 elif( "5" in fileName):
     ip = "192.168.100.254"
 
-filter(fileName)
-parseList = parse(fileName)
+filtered = filter(fileName)
+parseList = parse(filtered)
 compute(parseList, ip, fileName)
 if __name__ == '__main__':
     main()
