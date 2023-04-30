@@ -4,7 +4,7 @@ def compute(parsedList, ip, filename):
     newfilename= midstep[0] + "_filtered.txt"
     file = open(newfilename, "r")
     for line in file:
-        node.append(line.split())
+        parsedList.append(line.split())
     file.close()
     reqsent = 0
     reqrcvd = 0
@@ -30,13 +30,14 @@ def compute(parsedList, ip, filename):
                 reqbytesrcvd = reqbytesrcvd + int(i[5])
                 reqdatarcvd = reqdatarcvd + int(i[5]) - 42
  
-    output = open("output.csv", "a")
-    output.write(outputName)
-    output.write("  \n")
-    output.write("Echo Requests Sent" + "," + "Echo Requests Recieved" + "," + "Echo Replies Sent" + "," + "Echo Replies Recieved\n" )
-    output.write(str(reqsent/2) + "," + str(reqrcvd/2) + "," + str(repsent/2) + "," + str(reprcvd/2) + "\n")
-    output.write("Echo Request Bytes sent (bytes)" + "," + "Echo Request Data Sent (bytes)\n")
-    output.write(str(reqbytessent/2) + "," + str(reqdatasent/2) + "\n")
-    output.write("Echo Request Bytes Recieved (bytes)" + "," + "Echo Request Data Recieved (bytes)\n")
-    output.write(str(reqbytesrcvd/2) + "," + str(reqdatarcvd/2) + "\n")
-    output.write(" \n")
+    outputName = "output.csv"
+    with open(outputName, "a") as output:
+        output.write(newfilename)
+        output.write("  \n")
+        output.write("Echo Requests Sent" + "," + "Echo Requests Received" + "," + "Echo Replies Sent" + "," + "Echo Replies Received\n")
+        output.write(str(reqsent/2) + "," + str(reqrcvd/2) + "," + str(repsent/2) + "," + str(reprcvd/2) + "\n")
+        output.write("Echo Request Bytes sent (bytes)" + "," + "Echo Request Data Sent (bytes)\n")
+        output.write(str(reqbytessent/2) + "," + str(reqdatasent/2) + "\n")
+        output.write("Echo Request Bytes Received (bytes)" + "," + "Echo Request Data Received (bytes)\n")
+        output.write(str(reqbytesrcvd/2) + "," + str(reqdatarcvd/2) + "\n")
+        output.write(" \n")
