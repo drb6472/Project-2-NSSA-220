@@ -54,12 +54,12 @@ def compute(parsedList, ip, filename):
 
     # distance based metric 
     for i in parsedList:
-        if i[8] == "request":
+        if i[8] == "reply" and i[3] == ip:
             if "126" in i[11]:
-                hop += 1
-            else:
                 hop += 3
-        requestcount += 1
+            elif "128" in i[11]:
+                hop += 1
+            requestcount += 1
     hop = float(hop) / float(requestcount)
 
     # writing output to file
